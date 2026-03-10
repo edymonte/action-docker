@@ -1,2 +1,17 @@
 name: "Inclui cometario ( Composite)"
-descr
+description: "Essa action inclui comentario em issues ou PR (Composite)"
+author: Edilson Monteiro
+inputs:
+  GITHUB_TOKEN:
+    description: "Token de acesso ao GitHub"
+    required: true
+  issue-id:
+    description: "ID da Issue ou PR"
+    required: true
+  comment:
+    description: "Comentario a ser incluido"
+    required: true
+outputs:
+  comment-id: 
+    description: "ID do comentario incluido"
+    value: ${{ steps.comment-action.outputs.comment-id }}
