@@ -11,7 +11,17 @@ inputs:
   comment:
     description: "Comentario a ser incluido"
     required: true
+  GITHUB_REPOSITORY:
+    description: "Id do repositorio"
 outputs:
   comment-id: 
     description: "ID do comentario incluido"
-    value: ${{ steps.comment-action.outputs.comment-id }}
+    #value: ${{ steps.comment-action.outputs.comment-id }}
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args: 
+    - ${{ inputs.GITHUB_TOKEN }}
+    - ${{ inputs.issue-id }}
+    - ${{ inputs.comment }}
+    - ${{ inputs.GITHUB_REPOSITORY }}
